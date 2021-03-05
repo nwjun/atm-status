@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>UPDATE STATUS</h1>
+        <form id="statusForm">
+            <label for="name" style="font-size: 1.2rem;">Name<abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
+            <br>
+            <input type="text" name="same" id="name" class="in" required>
+                <fieldset>
+                    <legend>Status<abbr title="required" aria-label="required" aria-required="true">*</abbr></legend>
+                    <p>
+                        <label for="working">Working</label>
+                        <input type="radio" name="status" id="working" required>                
+                    </p>
+                    <p>
+                        <label for="notWorking">Not Working</label>
+                        <input type="radio" name="status" id="notWorking">
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend>Reason<abbr title="required" aria-label="required" aria-required="true">*</abbr></legend>
+                    <p>
+                        <label for="noMoney">No money</label>
+                        <input type="radio" name="reason" id="noMoney" required>    
+                    </p>
+                    <p>
+                        <label for="noMoney">Maintenance</label>
+                        <input type="radio" name="reason" id="maintenance">    
+                    </p>
+                    <p>
+                        <label for="noMoney">Other</label>
+                        <input type="radio" name="reason" id="other">    
+                    </p>
+                </fieldset>
+            <p id = "info" style="font-size: 0.9rem;">Message to inform</p> 
+            <input type="submit" value="Submit" class = "submitButton" style="font-size: 1.5rem;">      
+        </form>
+    </div>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyCOUrr3jGvZ_B2rkvu8FH3y8r_y9D8gNs8",
+        authDomain: "statuslist-a643b.firebaseapp.com",
+        projectId: "statuslist-a643b",
+        storageBucket: "statuslist-a643b.appspot.com",
+        messagingSenderId: "374688213277",
+        appId: "1:374688213277:web:4ab653dd3ec97a5ee459f4",
+        measurementId: "G-T5Y7H7HJLN"
+        };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>        
+</body>
+</html>

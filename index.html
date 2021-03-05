@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Status KMM</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300&family=Playfair+Display:wght@900&family=Roboto:ital,wght@0,100;0,400;1,100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class = "container">
+        <header>
+            <h1>ATM STATUS KMM</h1>
+            <h2>By Jun</h2>
+        </header>
+        <section>
+            <div>
+                <p>Status: </p>
+                <p id = "status"></p>
+            </div>
+            <img src="\atm_machine.jpg" alt="picture of atm machine">
+            <div>
+                <p id="reason">Reason: </p>
+                <p class = "msg">reason</p>
+            </div>
+            <div>    
+                <p id="update">Last update: </p>
+                <p class = "msg">Date time</p>
+            </div>
+        </section>
+
+        <a href="/update_form.html"><button type="button" class = "submitButton">Update</button></a>
+        
+        <input type="button" value="FEEDBACK" id="toggleFeedback">
+        
+        <footer>
+            <form action="" id="feedbackForm">
+                <label for="email">Email <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
+                <input type="email" name="email" id="email" class="in" required>
+                <label for="feedback">Feedback <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
+                <textarea name="feedback" id="feedback" class="in" placeholder="Your feedback here..." required minlength="3"></textarea>
+                <input type="submit" class = "submitButton" value="Submit">
+            </form>
+        </footer>
+    </div>
+    <script>
+        document.getElementById("toggleFeedback").addEventListener("click", feedback);
+        function feedback() {
+            var a = document.querySelector('footer').style;
+            console.log(a.display);
+            if (a.display === 'none'){
+                a.display = 'block';
+                console.log("hi");
+            }
+            else{
+                a.display = 'none';
+                console.log("bye", a);
+            }
+        }
+
+    </script>
+</body>
+</html>
