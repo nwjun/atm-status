@@ -24,7 +24,7 @@ fieldset{
 }
 
 footer{
-    display:block;
+    display: none;
     margin-top: 3rem;
     /*toggle with js to show feedback form*/
 }
@@ -90,6 +90,19 @@ textarea{
     text-align: left;
 }
 
+.indexButton{
+    background-color: transparent;
+    border: none;
+    font-size: 0.7rem;
+    font-weight: 200;
+    cursor: pointer;
+    border-bottom: #824936 1px solid;
+    outline: none;
+}
+.indexButton:hover{
+    border-bottom: none;
+}
+
 .msg{
     font-size: 1rem;
     font-weight: 300;
@@ -126,16 +139,6 @@ textarea{
 
 #statusForm input, #statusForm label{
     font-size: 1rem;
-}
-
-#toggleFeedback{
-    background-color: transparent;
-    border: none;
-    font-size: 0.7rem;
-    font-weight: 200;
-    cursor: pointer;
-    border-bottom: #824936 1px solid;
-    outline: none;
 }
 
 #toggleFeedback:hover{

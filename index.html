@@ -32,12 +32,16 @@
             </div>
         </section>
 
-        <a href="/update_form.html"><button type="button" class = "submitButton">Update</button></a>
+        <a href="/update_form.html" rel="noopener noreferrer" target="_blank"><button type="button" class = "submitButton">Update</button></a>
         
-        <input type="button" value="FEEDBACK" id="toggleFeedback">
+        <div>
+            <input type="button" value="FEEDBACK" class="indexButton">
+            <a href="#" target="_blank" rel="noopener noreferrer"><input type="button" value="SUPPORT" class="indexButton"></a>
+        </div>
         
-        <footer class="flex">
-            <form action="" id="feedbackForm">
+        
+        <footer>
+            <form action="" id="feedbackForm" class="flex">
                 <div class="flex-item">
                     <label for="email">Email <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
                     <input type="email" name="email" id="email" class="in" required>
@@ -52,7 +56,7 @@
 
     </div>
     <script>
-        document.getElementById("toggleFeedback").addEventListener("click", feedback);
+        document.getElementsByClassName("indexButton")[0].addEventListener("click", feedback);
         function feedback() {
             var a = document.querySelector('footer').style;
             console.log(a.display);
