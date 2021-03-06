@@ -8,39 +8,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container flex">
         <h1>UPDATE STATUS</h1>
-        <form id="statusForm">
-            <label for="name" style="font-size: 1.2rem;">Name<abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
-            <br>
-            <input type="text" name="same" id="name" class="in" required>
-                <fieldset>
-                    <legend>Status<abbr title="required" aria-label="required" aria-required="true">*</abbr></legend>
-                    <p>
-                        <label for="working">Working</label>
-                        <input type="radio" name="status" id="working" required>                
-                    </p>
-                    <p>
-                        <label for="notWorking">Not Working</label>
-                        <input type="radio" name="status" id="notWorking">
-                    </p>
-                </fieldset>
-                <fieldset>
-                    <legend>Reason<abbr title="required" aria-label="required" aria-required="true">*</abbr></legend>
-                    <p>
-                        <label for="noMoney">No money</label>
-                        <input type="radio" name="reason" id="noMoney" required>    
-                    </p>
-                    <p>
-                        <label for="noMoney">Maintenance</label>
-                        <input type="radio" name="reason" id="maintenance">    
-                    </p>
-                    <p>
-                        <label for="noMoney">Other</label>
-                        <input type="radio" name="reason" id="other">    
-                    </p>
-                </fieldset>
-            <p id = "info" style="font-size: 0.9rem;">Message to inform</p> 
+        <form id="statusForm" class="flex-item">
+            <div class="flex-item">
+                <label for="name" style="font-size: 1.2rem;">Name<abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
+                <input type="text" name="same" id="name" class="in" required>
+            </div>
+            <fieldset class="flex-item">
+                <legend>Status<abbr title="required" aria-label="required" aria-required="true">*</abbr></legend>
+                <p>
+                    <label for="working">Working</label>
+                    <input type="radio" name="status" id="working" required>                
+                </p>
+                <p>
+                    <label for="notWorking">Not Working</label>
+                    <input type="radio" name="status" id="notWorking">
+                </p>
+            </fieldset>
+            <fieldset class="flex-item">
+                <legend>Reason<abbr title="required" aria-label="required" aria-required="true">*</abbr></legend>
+                <p>
+                    <label for="noMoney">No money</label>
+                    <input type="radio" name="reason" id="noMoney" required>    
+                </p>
+                <p>
+                    <label for="noMoney">Maintenance</label>
+                    <input type="radio" name="reason" id="maintenance">    
+                </p>
+                <p>
+                    <label for="noMoney">Other</label>
+                    <input type="radio" name="reason" id="other">    
+                </p>
+            </fieldset>
+            <p id = "info" style="font-size: 0.9rem;" class="flex-item">Message to inform</p> 
             <input type="submit" value="Submit" class = "submitButton" style="font-size: 1.5rem;">      
         </form>
     </div>

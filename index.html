@@ -11,24 +11,24 @@
 </head>
 
 <body>
-    <div class = "container">
+    <div class = "container flex">
         <header>
             <h1>ATM STATUS KMM</h1>
             <h2>By Jun</h2>
         </header>
-        <section>
+        <section class="flex-item">
             <div>
                 <p>Status: </p>
                 <p id = "status"></p>
             </div>
             <img src="\atm_machine.jpg" alt="picture of atm machine">
             <div>
-                <p id="reason">Reason: </p>
-                <p class = "msg">reason</p>
+                <p>Reason: </p>
+                <p class = "msg" id="reason">reason</p>
             </div>
             <div>    
-                <p id="update">Last update: </p>
-                <p class = "msg">Date time</p>
+                <p>Last update: </p>
+                <p class = "msg" id="update">Date time</p>
             </div>
         </section>
 
@@ -36,15 +36,20 @@
         
         <input type="button" value="FEEDBACK" id="toggleFeedback">
         
-        <footer>
+        <footer class="flex">
             <form action="" id="feedbackForm">
-                <label for="email">Email <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
-                <input type="email" name="email" id="email" class="in" required>
-                <label for="feedback">Feedback <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
-                <textarea name="feedback" id="feedback" class="in" placeholder="Your feedback here..." required minlength="3"></textarea>
+                <div class="flex-item">
+                    <label for="email">Email <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
+                    <input type="email" name="email" id="email" class="in" required>
+                </div>
+                <div class="flex-item">
+                    <label for="feedback">Feedback <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
+                    <textarea name="feedback" id="feedback" class="in" placeholder="Your feedback here..." required minlength="3"></textarea>
+                </div>
                 <input type="submit" class = "submitButton" value="Submit">
             </form>
         </footer>
+
     </div>
     <script>
         document.getElementById("toggleFeedback").addEventListener("click", feedback);

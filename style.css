@@ -14,8 +14,19 @@ a{
     text-decoration: none;
 }
 
-div{
-    margin: 2rem 0;
+form{
+    width:100%;
+}
+
+
+fieldset{
+    width:100%;
+}
+
+footer{
+    display:block;
+    margin-top: 3rem;
+    /*toggle with js to show feedback form*/
 }
 
 h1{
@@ -25,9 +36,7 @@ h1{
     word-spacing: 0.5rem;
     line-height: 2rem;
     font-weight: 900;
-    margin-bottom: 1rem;
     color: #824936;
-
 }
 
 h2{
@@ -40,30 +49,12 @@ h2{
 
 img{
     max-width: 50%;
-    margin:0 auto;
+    margin:0 auto 1rem;
     height:auto;
-}
-
-fieldset{
-    width:80%;
-    margin: 3rem auto 1.5rem;
-}
-
-footer{
-    display:block;
-    /*toggle with js to show feedback form*/
-}
-
-form input{
-    margin-bottom: 2rem;
 }
 
 p{
     font-size: 1.3rem;
-}
-
-section{
-    padding: 3rem 0px 0px;
 }
 
 textarea{
@@ -71,14 +62,31 @@ textarea{
     resize: none;
 }
 
+
 .container{
     max-width: 80%;
     margin: 3rem auto;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     text-align: center;
 }
 
+.flex-item{
+    margin:1.2rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container > .flex-item:first-of-type{
+    margin-top: 4rem;
+}
+
 .in{
-    padding: 0.3rem 0.8rem;
     text-align: left;
 }
 
@@ -92,11 +100,13 @@ textarea{
     color:#824936;
     background-color: #F0F0C9;
     border: none;
-    padding: 1rem 2rem; 
     border-radius: 0.2rem;
     margin-top: 1rem;
     width: 100%;
     font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0.3rem 5rem;
+    text-transform: uppercase;
 }
 
 .submitButton:hover{
@@ -107,28 +117,18 @@ textarea{
 }
 
 #feedbackForm{
-    display: flex;
-    flex-direction: column;
-    margin: 4rem auto 3rem;
     font-size:1rem;
-    padding: 0.5rem 0;
 }
 
 #statusForm, #statusForm legend{
     font-size: 1.2rem;
-    display: block;
-    margin-top: 4rem;
 }
 
 #statusForm input, #statusForm label{
-    margin-bottom: 1rem;
     font-size: 1rem;
 }
 
 #toggleFeedback{
-    display: block;
-    padding: 0;
-    margin: 1rem auto 0;
     background-color: transparent;
     border: none;
     font-size: 0.7rem;
