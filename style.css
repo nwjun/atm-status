@@ -23,6 +23,10 @@ fieldset{
     width:100%;
 }
 
+fieldset:nth-child(3){
+    display: none;
+}
+
 footer{
     display: none;
     margin-top: 3rem;

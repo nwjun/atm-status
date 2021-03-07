@@ -20,26 +20,26 @@
                 <legend>Status<abbr title="required" aria-label="required" aria-required="true">*</abbr></legend>
                 <p>
                     <label for="working">Working</label>
-                    <input type="radio" name="status" id="working" required>                
+                    <input type="radio" name="status" value="working" required>                
                 </p>
                 <p>
                     <label for="notWorking">Not Working</label>
-                    <input type="radio" name="status" id="notWorking">
+                    <input type="radio" name="status" value="notWorking">
                 </p>
             </fieldset>
             <fieldset class="flex-item">
                 <legend>Reason<abbr title="required" aria-label="required" aria-required="true">*</abbr></legend>
                 <p>
                     <label for="noMoney">No money</label>
-                    <input type="radio" name="reason" id="noMoney" required>    
+                    <input type="radio" name="reason" value="noMoney">    
                 </p>
                 <p>
                     <label for="noMoney">Maintenance</label>
-                    <input type="radio" name="reason" id="maintenance">    
+                    <input type="radio" name="reason" value="maintenance">    
                 </p>
                 <p>
                     <label for="noMoney">Other</label>
-                    <input type="radio" name="reason" id="other">    
+                    <input type="radio" name="reason" value="other">    
                 </p>
             </fieldset>
             <p id = "info" style="font-size: 0.9rem;" class="flex-item">Message to inform</p> 
@@ -48,12 +48,14 @@
     </div>
     
     <script>
+        //format for date
         const optionsD = {
             month:'2-digit',
             day: '2-digit',
             year: 'numeric',
             timeZone: 'Asia/Singapore',
         }
+        //format for time
         const optionsT = {
             hour: '2-digit',
             minute: '2-digit',
@@ -61,13 +63,32 @@
         }
 
         document.getElementById("create").addEventListener("click", getDate);
+        //Record submitted time
+
+        document.getElementsByTagName("fieldset")[0].addEventListener("click", reasonVisibile);
+        //Check whether 'notWorking' is selected
         
         function getDate() {
-            console.log("hi");
-           var submittedDate = new Date().toLocaleDateString('en-GB',optionsD);
-           var submittedTime = new Date().toLocaleTimeString('en-GB',optionsT);
+        //Record submitted date and time
+            var submittedDate = new Date().toLocaleDateString('en-GB',optionsD);
+            var submittedTime = new Date().toLocaleTimeString('en-GB',optionsT);
         }
-        
+
+        function reasonVisibile() {
+        //display and set reason to required if notWorking is selected and removed them if it is not
+
+            x = document.getElementsByTagName("fieldset")[0].getElementsByTagName("input")[1];
+
+            if (x.checked){
+                document.getElementsByTagName("fieldset")[1].style.display='flex';
+                document.getElementsByTagName("input")[3].required = true;
+            }
+            else{
+                document.getElementsByTagName("fieldset")[1].style.display='none';
+                x.required = false;
+            }
+                
+        }
        
     </script>
 </body>
