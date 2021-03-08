@@ -31,4 +31,5 @@ app.post('/upload', (req, res)=>{
     submitted: data.submitted,
   }
   database.insert(row);
+  res.status(200).send({msg:'Inserted'});
 })
