@@ -11,7 +11,7 @@
 <body>
     <div class="container flex">
         <h1>UPDATE STATUS</h1>
-        <form id="statusForm" class="flex-item;">
+        <form id="statusForm" class="flex-item;" action ="/upload" method = "POST">
             <div class="flex-item">
                 <label for="name" style="font-size: 1.2rem;">Name<abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
                 <input type="text" name="name" id="name" class="in" required>
@@ -47,7 +47,7 @@
                 <input type="datetime-local" name="submitted" class="in" required>
             </div>
             <p id = "info" style="font-size: 0.9rem;" class="flex-item">Message to inform</p> 
-            <input type="submit" value="Submit" action ="/upload" method = "POST" class = "submitButton" style="font-size: 1.5rem;" id="create">      
+            <input type="submit" value="Submit" class = "submitButton" style="font-size: 1.5rem;" id="create">      
         </form>
     </div>
     
