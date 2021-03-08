@@ -3,7 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const app = express();
 const DataStore = require('nedb');
-const { response } = require('express');
+
 
 app  
   .use(express.static(path.join(__dirname, 'public')))
