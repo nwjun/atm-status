@@ -5,10 +5,10 @@ const app = express();
 const DataStore = require('nedb');
 const { response } = require('express');
 
-app
+app  
+  .use(express.static(path.join(__dirname, 'public')))
   .use(express.json())
   .use(express.urlencoded( {extended: true} ))
-  .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
