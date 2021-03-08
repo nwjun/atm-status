@@ -9,3 +9,14 @@ app
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+app.post('/db', (req,res)=>{
+  console.log(req.body);
+  const data = req.body;
+  res.json({
+      status:'success',
+      latitude: data.lat,
+      longitiude: data.lon,
+  })
+});
+
