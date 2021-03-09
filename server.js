@@ -15,20 +15,46 @@ app
 
 const database = new DataStore('database.db');
 database.loadDatabase();
+const admin = require("firebase-admin");
+
+const serviceAccount = require("C:/Users/user/Desktop/atm status/serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://statuslist-a643b-default-rtdb.firebaseio.com"
+});
 
 app.post('/upload', (req, res)=>{
   const data = req.body;
-  // if (data.status === "notWorking"){
-  //   atmStatus = false;
-  // }else{
-  //   atmStatus = true;
-  // }
-  const row ={
-    name: data.name,
-    status: data.status,
-    reason: data.reason,
-    submitted: data.submitted,
+
+// Get a database reference to our blog
+  const db = admin.database();
+  var ref = db.ref("status");
+
+  var usersRef = ref.child("users");
+  console.log(data.status)
+
+  if(data.status){
+    console.log("hi")
+    var row ={
+      name: data.name,
+      status: data.status,
+      submitted: data.submitted,
+    }
   }
+  else{
+    var row ={
+      name: data.name,
+      status: data.status,
+      reason: data.reason,
+      submitted: data.submitted,
+}
+}
+  console.log(data);
+  var userId = usersRef.push(row);
   database.insert(row);
-  res.status(200).send({msg:'Inserted'});
+  res.status(200).send({msg:'Inserted', id: userId});
 })
+
+
+

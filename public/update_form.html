@@ -7,6 +7,7 @@
     <title>Update Form</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
 </head>
 <body>
     <div class="container flex">
@@ -20,11 +21,11 @@
                 <legend>Status<abbr title="required" aria-label="required" aria-required="true">*</abbr></legend>
                 <p>
                     <label for="working">Working</label>
-                    <input type="radio" name="status" value="working" required>                
+                    <input type="radio" name="status" value=true required>                
                 </p>
                 <p>
                     <label for="notWorking">Not Working</label>
-                    <input type="radio" name="status" value="notWorking">
+                    <input type="radio" name="status" value=false>
                 </p>
             </fieldset>
             <fieldset class="flex-item">
@@ -50,7 +51,6 @@
             <input type="submit" value="Submit" class = "submitButton" style="font-size: 1.5rem;" id="create">      
         </form>
     </div>
-    
     <script>
         document.getElementsByTagName("fieldset")[0].addEventListener("click", reasonVisibile);
         //Check whether 'notWorking' is selected
