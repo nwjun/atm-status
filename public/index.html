@@ -54,8 +54,20 @@
     
     <script>
         document.getElementsByClassName("indexButton")[0].addEventListener("click", feedback);
-        
 
+        fetch('/getStatus').then(response=> response.json())
+        .then(response=>{
+            const data = response;
+            console.log('response data?', data);
+            document.getElementById('status').textContent = data["name"];
+            document.getElementById('status').textContent = data["status"];
+            document.getElementById('reason').textContent = data["reason"];
+            document.getElementById('dateTime').textContent = data["submitted"];
+        
+        })
+        .catch(err=> {
+            console.log('Error:', error);
+        });
 
         var status = 'hi';
         var reason = 'bye';
@@ -72,13 +84,6 @@
                 foot.display = 'none';
             }
         }
-
-        function updateInfo(){
-            document.getElementById('status').textContent = status;
-            document.getElementById('reason').textContent = reason;
-            document.getElementById('dateTime').textContent = dateTime;
-        }
-
         updateInfo();
     </script>
 </body>

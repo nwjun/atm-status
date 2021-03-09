@@ -22,13 +22,12 @@ admin.initializeApp({
 
 // Get a database reference to our blog
 const db = admin.database();
+var usersRef = db.ref("status");
+// var usersRef = ref.child("users");
 
 //upload data to database
 app.post('/upload', (req, res)=>{
   const data = req.body;
-  var ref = db.ref("status");
-  var usersRef = ref.child("users");
-
   if(data.status){
     var row ={
       name: data.name,
@@ -42,16 +41,25 @@ app.post('/upload', (req, res)=>{
       status: data.status,
       reason: data.reason,
       submitted: data.submitted,
-}
-}
-usersRef.push(row);
+    }
+  }
 
+usersRef.push(row);
 usersRef.orderByChild("submitted").limitToLast(1).on("value", function(snapshot){
-  res.status(200).send({msg:'Inserted', list: snapshot.val()});
+  console.log(Object.values(snapshot.val())[0]);
 }, function(err){
   console.log("The read failed: " + err);
 })
-  
+res.status(200).send({msg:'Inserted'});  
 })
 
-
+app.get('/getStatus',(req,res)=>{
+  usersRef.orderByChild("submitted").limitToLast(1).once("value", function(snapshot){
+    console.log("hi");
+    var item=Object.values(snapshot.val())[0];
+    res.send(item);
+  }, function(err){
+    console.log("The read failed: " + err);
+  })
+  console.log("request")
+})
