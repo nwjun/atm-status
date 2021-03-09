@@ -107,6 +107,9 @@ textarea{
 .indexButton:hover{
     border-bottom: none;
 }
+.indexStatus{
+    margin-bottom: 1.2rem;
+}
 
 .msg{
     font-size: 1rem;
@@ -138,6 +141,11 @@ textarea{
     font-size:1rem;
 }
 
+#status{
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
 #statusForm, #statusForm legend{
     font-size: 1.2rem;
 }
@@ -153,3 +161,4 @@ textarea{
 @media screen and (min-width: 600px){
 
 }
+

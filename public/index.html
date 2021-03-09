@@ -17,15 +17,18 @@
             <h2>By Jun</h2>
         </header>
         <section class="flex-item">
-            <div>
-                <p>Status: <span id="status"></span></p>
+            <div class="indexStatus">
+                <p>Status: <div id="status"></div></p>
             </div>
             <img src="\atm_machine.jpg" alt="picture of atm machine">
-            <div>
-                <p>Reason: <span id="reason" class='msg'></span></p>
+            <div id="rowReason" class="indexStatus">
+                <p>Reason: <div id="reason" class='msg'></div></p>
             </div>
-            <div>    
-                <p>Last update: <span id="dateTime" class='msg'></span></p>
+            <div class="indexStatus">    
+                <p>Last update: <div id="dateTime" class='msg'></div></p>
+            </div>
+            <div class="indexStatus">    
+                <p>Contributor: <div id="contributor" class='msg'></div></p>
             </div>
         </section>
 
@@ -55,23 +58,46 @@
     <script>
         document.getElementsByClassName("indexButton")[0].addEventListener("click", feedback);
 
+        function reson() {
+        //Show/Hide reason   
+            var foot = document.querySelector('footer').style;
+            
+            if (foot.display === 'none'){
+                foot.display = 'block';
+            }
+            else{
+                foot.display = 'none';
+            }
+        }
+
+        //retrieve data from database and update to index
         fetch('/getStatus').then(response=> response.json())
         .then(response=>{
             const data = response;
-            console.log('response data?', data);
-            document.getElementById('status').textContent = data["name"];
-            document.getElementById('status').textContent = data["status"];
-            document.getElementById('reason').textContent = data["reason"];
-            document.getElementById('dateTime').textContent = data["submitted"];
+            let status = data["status"];
+            let contributor = data["name"]
+            let reason = data["reason"];
+            let date = data["submitted"];
+
+            //if it is working, hide reason
+            if(status){
+                document.getElementById("rowReason").style.display = 'none';
+                document.getElementById('status').style.color = 'green';
+                document.getElementById('status').textContent ='Working';
+
+            }
+            else{
+                document.getElementById("rowReason").style.display = 'block';
+                document.getElementById('status').style.color = 'red';
+                document.getElementById('status').textContent = 'Not Working';
+            }
+            document.getElementById('contributor').textContent = contributor;
+            document.getElementById('dateTime').textContent = date.replace('T', ' ');
         
         })
         .catch(err=> {
             console.log('Error:', error);
         });
-
-        var status = 'hi';
-        var reason = 'bye';
-        var dateTime = 'test';
 
         function feedback() {
         //Show/Hide feedback form    
@@ -84,7 +110,6 @@
                 foot.display = 'none';
             }
         }
-        updateInfo();
     </script>
 </body>
 </html>
