@@ -44,7 +44,7 @@
                 </p>
             </fieldset>
             <div class="flex-item">
-                <label for="name" style="font-size: 1.2rem;">Last checked: <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
+                <label for="name" style="font-size: 1.2rem;">Last check: <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
                 <input type="datetime-local" name="submitted" class="in" id = "inputDate" required>
             </div>
             <p id = "info" style="font-size: 0.9rem;" class="flex-item">Please be responsible with information you will share on this website. This website is intended to help to save our time and energy. Thank you. :)</p> 
@@ -56,7 +56,7 @@
         document.getElementsByTagName("fieldset")[0].addEventListener("click", reasonVisibile);
         //Check whether 'notWorking' is selected
 
-        //set max dateTime for last checked
+        //set max dateTime for last check
         function setMaxDate(){
             let n = new Date();
             n = n.toLocaleString("sv-SE").replace(' ', 'T').slice(0,-3);
