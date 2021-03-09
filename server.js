@@ -15,8 +15,8 @@ app
 
 const database = new DataStore('database.db');
 database.loadDatabase();
-const admin = require("firebase-admin");
 
+const admin = require("firebase-admin");
 const serviceAccount = require("C:/Users/user/Desktop/atm status/serviceAccountKey.json");
 
 admin.initializeApp({
@@ -24,6 +24,7 @@ admin.initializeApp({
   databaseURL: "https://statuslist-a643b-default-rtdb.firebaseio.com"
 });
 
+//upload data to database
 app.post('/upload', (req, res)=>{
   const data = req.body;
 
@@ -32,10 +33,8 @@ app.post('/upload', (req, res)=>{
   var ref = db.ref("status");
 
   var usersRef = ref.child("users");
-  console.log(data.status)
 
   if(data.status){
-    console.log("hi")
     var row ={
       name: data.name,
       status: data.status,
@@ -50,11 +49,17 @@ app.post('/upload', (req, res)=>{
       submitted: data.submitted,
 }
 }
-  console.log(data);
   var userId = usersRef.push(row);
   database.insert(row);
+
   res.status(200).send({msg:'Inserted', id: userId});
 })
 
+  const db = admin.database();
+  const ref = db.ref("status/users")
+  ref.orderByChild("submitted").limitToLast(1).on("value", function(snapshot){
+    console.log(snapshot.val());
 
-
+  }, function(err){
+    console.log("The read failed: " + err);
+  })
