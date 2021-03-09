@@ -14,7 +14,7 @@
         <h1>UPDATE STATUS</h1>
         <form id="statusForm" class="flex-item;" action ="/upload" method = "POST">
             <div class="flex-item">
-                <label for="name" style="font-size: 1.2rem;">Name<abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
+                <label for="name" style="font-size: 1.2rem;" maxlength="10">Nickname<abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
                 <input type="text" name="name" id="name" class="in" required>
             </div>
             <fieldset class="flex-item">
@@ -44,16 +44,43 @@
                 </p>
             </fieldset>
             <div class="flex-item">
-                <label for="name" style="font-size: 1.2rem;">Submitted Time<abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
-                <input type="datetime-local" name="submitted" class="in" required>
+                <label for="name" style="font-size: 1.2rem;">Last checked: <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
+                <input type="datetime-local" name="submitted" class="in" id = "inputDate" required>
             </div>
-            <p id = "info" style="font-size: 0.9rem;" class="flex-item">Message to inform</p> 
+            <p id = "info" style="font-size: 0.9rem;" class="flex-item">Please be responsible with information you will share on this website. This website is intended to help to save our time and energy. Thank you. :)</p> 
+            <p id = "returnForm"></p>
             <input type="submit" value="Submit" class = "submitButton" style="font-size: 1.5rem;" id="create">      
         </form>
     </div>
     <script>
         document.getElementsByTagName("fieldset")[0].addEventListener("click", reasonVisibile);
         //Check whether 'notWorking' is selected
+
+        //set max dateTime for last checked
+        function setMaxDate(){
+            let n = new Date();
+            n = n.toLocaleString("sv-SE").replace(' ', 'T').slice(0,-3);
+            console.log(n);
+            document.getElementById('inputDate').max = n;
+        }
+        setMaxDate();
+    
+        //submit form to database
+        document.forms['statusForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            fetch(event.target.action,{
+                method: 'POST',
+                body: new URLSearchParams(new FormData(event.target))
+                // event.target is the form
+            }).then((res)=>{
+                document.getElementById("returnForm").textContent = "Thank you for your submission!";
+                document.getElementById("returnForm").style.color = "green";
+                setTimeout(()=> window.close(), 2000);
+            }).catch((error)=>{
+                document.getElementById("returnForm").textContent = "Error has occurred!";
+                document.getElementById("returnForm").style.color = "red";
+            });
+        });
 
         function reasonVisibile() {
         //display and set reason to required if notWorking is selected and removed them if it is not

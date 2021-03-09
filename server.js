@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 const app = express();
+require('dotenv').config();
 
 app  
   .use(express.static(path.join(__dirname, 'public')))
@@ -23,7 +24,6 @@ admin.initializeApp({
 // Get a database reference to our blog
 const db = admin.database();
 var usersRef = db.ref("status");
-// var usersRef = ref.child("users");
 
 //upload data to database
 app.post('/upload', (req, res)=>{
@@ -45,21 +45,14 @@ app.post('/upload', (req, res)=>{
   }
 
 usersRef.push(row);
-usersRef.orderByChild("submitted").limitToLast(1).on("value", function(snapshot){
-  console.log(Object.values(snapshot.val())[0]);
-}, function(err){
-  console.log("The read failed: " + err);
-})
-res.status(200).send({msg:'Inserted'});  
+  res.status(200).send({msg:'Inserted'}); 
 })
 
 app.get('/getStatus',(req,res)=>{
   usersRef.orderByChild("submitted").limitToLast(1).once("value", function(snapshot){
-    console.log("hi");
     var item=Object.values(snapshot.val())[0];
     res.send(item);
   }, function(err){
     console.log("The read failed: " + err);
   })
-  console.log("request")
 })
