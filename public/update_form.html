@@ -47,57 +47,11 @@
                 <label for="name" style="font-size: 1.2rem;">Last check: <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
                 <input type="datetime-local" name="submitted" class="in" id = "inputDate" required>
             </div>
-            <p id = "info" style="font-size: 0.9rem;" class="flex-item">Please be responsible with information you will share on this website. This website is intended to help to save our time and energy. Thank you. :)</p> 
+            <p id = "info" style="font-size: 0.9rem;" class="flex-item">Please be responsible with the information you will be sharing on this website. This website is intended to help the students. Thank you. :)</p> 
             <p id = "returnForm"></p>
             <input type="submit" value="Submit" class = "submitButton" style="font-size: 1.5rem;" id="create">      
         </form>
     </div>
-    <script>
-        document.getElementsByTagName("fieldset")[0].addEventListener("click", reasonVisibile);
-        //Check whether 'notWorking' is selected
-
-        //set max dateTime for last check
-        function setMaxDate(){
-            let n = new Date();
-            n = n.toLocaleString("sv-SE").replace(' ', 'T').slice(0,-3);
-            console.log(n);
-            document.getElementById('inputDate').max = n;
-        }
-        setMaxDate();
-    
-        //submit form to database
-        document.forms['statusForm'].addEventListener('submit', (event) => {
-            event.preventDefault();
-            fetch(event.target.action,{
-                method: 'POST',
-                body: new URLSearchParams(new FormData(event.target))
-                // event.target is the form
-            }).then((res)=>{
-                document.getElementById("returnForm").textContent = "Thank you for your submission!";
-                document.getElementById("returnForm").style.color = "green";
-                setTimeout(()=> window.close(), 2000);
-            }).catch((error)=>{
-                document.getElementById("returnForm").textContent = "Error has occurred!";
-                document.getElementById("returnForm").style.color = "red";
-            });
-        });
-
-        function reasonVisibile() {
-        //display and set reason to required if notWorking is selected and removed them if it is not
-
-            x = document.getElementsByTagName("fieldset")[0].getElementsByTagName("input")[1];
-
-            if (x.checked){
-                document.getElementsByTagName("fieldset")[1].style.display='flex';
-                document.getElementsByTagName("input")[3].required = true;
-            }
-            else{
-                document.getElementsByTagName("fieldset")[1].style.display='none';
-                x.required = false;
-            }
-                
-        }
-
-    </script>
+    <script src="formSrc.js"></script>
 </body>
 </html>
