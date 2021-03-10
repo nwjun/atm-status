@@ -12,23 +12,6 @@ function reson() {
     foot.display = "none";
   }
 }
-//Retrieve data from data base 
-firebase.initializeApp(firebaseConfig);
-var db = firebase.database();
-var usersRef = db.ref("status");
-usersRef
-  .orderByChild("submitted")
-  .limitToLast(1)
-  .on(
-    "value",
-    function (snapshot) {
-      var item = Object.values(snapshot.val())[0];
-      updateList(item);
-    },
-    function (err) {
-      console.log("The read failed: " + err);
-    }
-  );
 
 function updateList(item) {
   const data = item;
