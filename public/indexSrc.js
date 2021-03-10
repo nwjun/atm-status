@@ -24,15 +24,15 @@ fetch("/getStatus")
     let date = data["submitted"];
 
     //if it is working, hide reason
-    if (status) {
+    if (status=="Working") {
       document.getElementById("rowReason").style.display = "none";
       document.getElementById("status").style.color = "green";
-      document.getElementById("status").textContent = "Working";
     } else {
       document.getElementById("rowReason").style.display = "block";
       document.getElementById("status").style.color = "red";
-      document.getElementById("status").textContent = "Not Working";
+      document.getElementById("reason").textContent = reason;
     }
+    document.getElementById("status").textContent = status;
     document.getElementById("contributor").textContent = contributor;
     document.getElementById("dateTime").textContent = date.replace("T", " ");
   })
