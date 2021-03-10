@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KMM ATM Status</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300&family=Playfair+Display:wght@900&family=Roboto:ital,wght@0,100;0,400;1,100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
 </head>
 
 <body>
@@ -36,45 +37,51 @@
         <a href="/update_form.html" rel="noopener noreferrer" target="_blank"><button type="button" class = "submitButton">Update</button></a>
         
         <div>
-            <input type="button" value="FEEDBACK" class="indexButton">
-            <a href="#" target="_blank" rel="noopener noreferrer"><input type="button" value="SUPPORT" class="indexButton"></a>
+            <input type="button" value="FEEDBACK" class="indexButton" display="inline-block">
         </div>
         
         <footer>
-            <form action="https://kmm-atm-status.herokuapp.com/" method="post" id="feedbackForm" class="flex">
-                <div class="flex-item">
+            <form action="https://kmm-atm-status.herokuapp.com/" method="post" id="feedbackForm" class="flex" style="width: 100%;">
+                <div class="flex-item" style="width: 100%;">
                     <label for="email">Email <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
                     <input type="email" name="emailAdress" id="email" class="in" required>
                 </div>
-                <div class="flex-item">
+                <div class="flex-item" style="width: 100%;">
                     <label for="feedback">Feedback <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
                     <textarea name="message" id="feedback" class="in" placeholder="Your feedback here..." required minlength="3"></textarea>
                 </div>
                 <input type="submit" class = "submitButton" value="Submit">
             </form>
         </footer>
-    </div>
+        <div id="social" class="flex">
+            <a href="https://github.com/nwjun/atm-status" rel="noopener noreferrer" target="_blank"><img src="/png/003-github-logo.png" alt="github-icon"></a>
+            <a href="https://www.instagram.com/nw_jun/" rel="noopener noreferrer" target="_blank"><img src="/png/001-instagram.png" alt="instagram-icon"></a>
+            <a href="mailto:nwjun02@gmail.com" rel="noopener noreferrer" target="_blank"><img src="/png/002-email.png" alt="email-icon"></a>
+        </div>
+        <div id="credit">
+            <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div>Icons made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        </div>
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
     <script src="./init-firebase.js"></script>
-
     <script src="indexSrc.js"></script>
     <script>
-  var db = firebase.database();
-  var usersRef = db.ref("status");
-  usersRef
-.orderByChild("submitted")
-.limitToLast(1)
-.on(
-  "value",
-  function (snapshot) {
-    var item = Object.values(snapshot.val())[0];
-    updateList(item);
-  },
-  function (err) {
-    console.log("The read failed: " + err);
-  }
-);
+        var db = firebase.database();
+        var usersRef = db.ref("status");
+        usersRef
+        .orderByChild("submitted")
+        .limitToLast(1)
+        .on(
+        "value",
+        function (snapshot) {
+            var item = Object.values(snapshot.val())[0];
+            updateList(item);
+        },
+        function (err) {
+            console.log("The read failed: " + err);
+        }
+        );
     </script>
 </body>
 </html>

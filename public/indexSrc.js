@@ -2,17 +2,6 @@ document
   .getElementsByClassName("indexButton")[0]
   .addEventListener("click", feedback);
 
-function reson() {
-  //Show/Hide reason
-  var foot = document.querySelector("footer").style;
-
-  if (foot.display === "none") {
-    foot.display = "block";
-  } else {
-    foot.display = "none";
-  }
-}
-
 function updateList(item) {
   const data = item;
   let status = data["status"];
