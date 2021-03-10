@@ -41,16 +41,17 @@
         </div>
         
         <footer>
-            <form action="https://kmm-atm-status.herokuapp.com/" method="post" id="feedbackForm" class="flex" style="width: 100%;">
+            <form action="/feedback" method="post" id="feedbackForm" class="flex" style="width: 100%;">
                 <div class="flex-item" style="width: 100%;">
                     <label for="email">Email <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
-                    <input type="email" name="emailAdress" id="email" class="in" required>
+                    <input type="email" name="emailAddress" id="email" class="in" required>
                 </div>
                 <div class="flex-item" style="width: 100%;">
                     <label for="feedback">Feedback <abbr title="required" aria-label="required" aria-required="true">*</abbr></label>
                     <textarea name="message" id="feedback" class="in" placeholder="Your feedback here..." required minlength="3"></textarea>
                 </div>
                 <input type="submit" class = "submitButton" value="Submit">
+                <p id = "returnFeedback"></p>
             </form>
         </footer>
         <div id="social" class="flex">

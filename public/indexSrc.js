@@ -34,3 +34,19 @@ function feedback() {
     foot.display = "none";
   }
 }
+
+document.forms["feedbackForm"].addEventListener("submit", (event) => {
+  event.preventDefault();
+  fetch(event.target.action, {
+    method: "POST",
+    body: new URLSearchParams(new FormData(event.target)),
+    // event.target is the form
+  })
+    .then((res) => {
+      document.getElementById("returnFeedback").textContent = "Thank you for your feedback!";
+    })
+    .catch((error) => {
+      document.getElementById("returnFeedback").textContent = "Error has occurred!";
+      document.getElementById("returnFeedback").style.color = "red";
+    });
+});

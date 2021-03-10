@@ -64,3 +64,25 @@ app.get("/getStatus", (req, res) => {
       }
     );
 });
+
+//sending feedback message
+var API_KEY = process.env.MAILGUN_API_KEY
+var DOMAIN = process.env.MAILGUN_DOMAIN
+var mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
+
+app.post("/feedback", (req, res) => {
+  const msg = req.body;
+  console.log(msg);
+const data = {
+  from: msg.emailAddress,
+  to: 'helloworldisagurl@gmail.com',
+  subject: 'KMM-ATM-STATUS feedback',
+  text: msg.message,
+};
+console.log(data);
+  mailgun.messages().send(data, function (error, body) {
+	console.log(body);
+  console.log(error);
+});
+  res.status(200).send({ msg: "Inserted" });
+})
