@@ -31,7 +31,7 @@ var usersRef = db.ref("status");
 //upload data to database
 app.post("/upload", (req, res) => {
   const data = req.body;
-  if (data.status) {
+  if (data.status == "Working") {
     var row = {
       name: data.name,
       status: data.status,
@@ -54,7 +54,7 @@ app.get("/getStatus", (req, res) => {
   usersRef
     .orderByChild("submitted")
     .limitToLast(1)
-    .once(
+    .on(
       "value",
       function (snapshot) {
         var item = Object.values(snapshot.val())[0];
