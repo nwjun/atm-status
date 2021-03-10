@@ -6,6 +6,8 @@ document
 //set max dateTime for last check
 function setMaxDate() {
   let n = new Date();
+  n.setHours(n.getHours() + 1);
+  console.log(n);
   n = n.toLocaleString("sv-SE").replace(" ", "T").slice(0, -3);
   console.log(n);
   document.getElementById("inputDate").max = n;

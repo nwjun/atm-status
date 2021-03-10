@@ -45,7 +45,6 @@ app.post("/upload", (req, res) => {
       submitted: data.submitted,
     };
   }
-
   usersRef.push(row);
   res.status(200).send({ msg: "Inserted" });
 });
