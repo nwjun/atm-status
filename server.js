@@ -49,18 +49,3 @@ app.post("/upload", (req, res) => {
   res.status(200).send({ msg: "Inserted" });
 });
 
-app.get("/getStatus", (req, res) => {
-  usersRef
-    .orderByChild("submitted")
-    .limitToLast(1)
-    .on(
-      "value",
-      function (snapshot) {
-        var item = Object.values(snapshot.val())[0];
-        res.send(item);
-      },
-      function (err) {
-        console.log("The read failed: " + err);
-      }
-    );
-});
